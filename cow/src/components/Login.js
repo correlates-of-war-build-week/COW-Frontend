@@ -3,7 +3,7 @@ import Loader from "react-loader-spinner";
 import { connect } from "react-redux";
 import { Form, Input } from "reactstrap";
 
-import { login } from "./actions";
+import { login } from "../actions";
 
 class Login extends Component {
   state = {
@@ -38,6 +38,13 @@ class Login extends Component {
               required
             />
           </div>
+          <button onClick={this.login}>
+            {this.props.loggingIn === true ? (
+              <Loader type="ThreeDots" color="#CCCFBC" />
+            ) : (
+              "Log Innnnnnn"
+            )}
+          </button>
         </Form>
       </div>
     );
