@@ -18,8 +18,10 @@ export const login = creds => dispatch => {
       //     creds
       //   )
       .then(res => {
-        localStorage.setItem("token", res.data.payload);
-        dispatch({ type: LOGIN_SUCCESS });
+        // localStorage.setItem("token", res.data.payload);
+        localStorage.setItem("token", res.data.token);
+        // dispatch({ type: LOGIN_SUCCESS });
+        dispatch({ type: LOGIN_SUCCESS, payload: res.data.token });
         return true;
       })
       .catch(err => console.log(err.response))

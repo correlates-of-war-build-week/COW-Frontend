@@ -14,6 +14,7 @@ function App() {
     <div className="App">
       <h1>App</h1>
       <Route path="/login" component={Login} />
+      <Route path="/register" component={SignUp} />
       {/* <Route path="/" component={SignUp} /> */}
 
       {/* <PrivateRoute exact path="/" component={PrivateRedo} /> */}
