@@ -7,6 +7,6 @@ export const axiosAuth = () => {
     headers: {
       Authorization: token
     },
-    baseURL: "https://correlates-of-war-backend.herokuapp.com/api/auth"
+    baseURL: "https://correlates-of-war-backend.herokuapp.com/api/auth/"
   });
 };

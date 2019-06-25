@@ -1,58 +1,63 @@
 import React, { Component } from "react";
 import Loader from "react-loader-spinner";
 import { connect } from "react-redux";
-import { Form, Input } from "reactstrap";
+import { Form, Input, FormGroup } from "reactstrap";
 
 import { login } from "../actions";
 
 class Login extends Component {
   state = {
-    username: "",
-    password: ""
+    creds: {
+      username: "",
+      password: ""
+    }
   };
   render() {
+    console.log(this.state);
     return (
       <div>
-        <Form>
-          <div>
-            <Input
-              placeholder="username"
-              name="username"
-              value={this.state.username}
-              onChange={this.handleChanges}
-              className={
-                this.props.error === true ? "error login-input" : "login-input"
-              }
-              required
-            />
-          </div>
-          <div>
-            <Input
-              placeholder="password"
-              name="password"
-              value={this.state.password}
-              onChange={this.handleChanges}
-              className={
-                this.props.error === true ? "error login-input" : "login-input"
-              }
-              required
-            />
-          </div>
-          <button onClick={this.login}>
-            {this.props.loggingIn === true ? (
-              <Loader type="ThreeDots" color="#CCCFBC" />
-            ) : (
-              "Log Innnnnnn"
-            )}
-          </button>
-        </Form>
+        <h1>inside the form</h1>
+
+        <FormGroup>
+          <Input
+            type="text"
+            placeholder="username"
+            name="username"
+            value={this.state.username}
+            onChange={this.handleChanges}
+            className={
+              this.props.error === true ? "error login-input" : "login-input"
+            }
+            required
+          />
+
+          <Input
+            type="password"
+            placeholder="password"
+            name="password"
+            value={this.state.password}
+            onChange={this.handleChanges}
+            className={
+              this.props.error === true ? "error login-input" : "login-input"
+            }
+            required
+          />
+        </FormGroup>
+        <button onClick={this.login}>
+          {this.props.loggingIn === true ? (
+            <Loader type="ThreeDots" color="#CCCFBC" />
+          ) : (
+            "Log In"
+          )}
+        </button>
       </div>
     );
   }
 
   componentDidMount() {
     if (this.props.token) {
-      this.props.history.push("/");
+      this.props.history.push("login");
+      //   this.props.history.push("correlates_of_war");
     }
   }
   handleChanges = e => {
@@ -69,7 +74,8 @@ class Login extends Component {
         password: this.state.password
       })
       .then(() => {
-        this.props.history.push("/");
+        // this.props.history.push("login");
+        this.props.history.push("correlates_of_war");
       });
   };
 }
