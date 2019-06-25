@@ -10,14 +10,20 @@ export const SIGNUP_FAILURE = "SIGNUP_FAILURE";
 
 export const login = creds => dispatch => {
   dispatch({ type: LOGIN_START });
-  return axiosAuth()
-    .post("login", creds)
-    .then(res => {
-      localStorage.setItem("token", res.data.payload);
-      dispatch({ type: LOGIN_SUCCESS });
-      return true;
-    })
-    .catch(err => console.log(err.response));
+  return (
+    axiosAuth()
+      .post("login", creds)
+      //   .post(
+      //     "https://correlates-of-war-backend.herokuapp.com/api/auth/login",
+      //     creds
+      //   )
+      .then(res => {
+        localStorage.setItem("token", res.data.payload);
+        dispatch({ type: LOGIN_SUCCESS });
+        return true;
+      })
+      .catch(err => console.log(err.response))
+  );
 };
 
 export const signUp = creds => dispatch => {

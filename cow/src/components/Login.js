@@ -57,6 +57,7 @@ class Login extends Component {
   componentDidMount() {
     if (this.props.token) {
       this.props.history.push("login");
+      //   this.props.history.push("correlates_of_war");
     }
   }
   handleChanges = e => {
@@ -73,7 +74,8 @@ class Login extends Component {
         password: this.state.password
       })
       .then(() => {
-        this.props.history.push("login");
+        // this.props.history.push("login");
+        this.props.history.push("correlates_of_war");
       });
   };
 }
