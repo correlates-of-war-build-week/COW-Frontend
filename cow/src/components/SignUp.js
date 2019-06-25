@@ -42,7 +42,7 @@ class SignUp extends Component {
             {this.props.loggingIn === true ? (
               <Loader type="ThreeDots" color="#CCCFBC" />
             ) : (
-              "Log Innnnnnn"
+              "Sign Up"
             )}
           </button>
         </Form>

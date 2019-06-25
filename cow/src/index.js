@@ -7,8 +7,12 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import reducer from "./reducer";
 
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import App from "./App";
+require("dotenv").config();
+// import dotenv from "dotenv";
+// dotenv.config();
 
 const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));
 

@@ -7,14 +7,17 @@ import Login from "./components/Login";
 import MapContainer from "./components/MapContainer";
 
 import "./App.css";
+import SignUp from "./components/SignUp";
 
 function App() {
   return (
     <div className="App">
-      <h1>howdy</h1>
+      <h1>App</h1>
       <Route path="/login" component={Login} />
+      {/* <Route path="/" component={SignUp} /> */}
+
       {/* <PrivateRoute exact path="/" component={PrivateRedo} /> */}
-      <PrivateRoute path="/correlates_of_war" component={MapContainer} />
+      <PrivateRoute exact path="/correlates_of_war" component={MapContainer} />
     </div>
   );
 }
