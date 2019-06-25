@@ -1,4 +1,11 @@
-import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILURE } from "../actions";
+import {
+  LOGIN_START,
+  LOGIN_SUCCESS,
+  LOGIN_FAILURE,
+  SIGNUP_START,
+  SIGNUP_SUCCESS,
+  SIGNUP_FAILURE
+} from "../actions";
 
 const initialState = {
   wars: [],
@@ -26,6 +33,27 @@ export const reducer = (state = initialState, action) => {
         token: localStorage.getItem("token")
       };
     case LOGIN_FAILURE:
+      return {
+        ...state,
+        logggingIn: false,
+        error: action.payload
+      };
+    case SIGNUP_START:
+      console.log("heres the store:", state);
+      console.log("heres the action:", action);
+      return {
+        ...state,
+        logggingIn: true,
+        error: false
+      };
+    case SIGNUP_SUCCESS:
+      return {
+        ...state,
+        logggingIn: false,
+        error: false,
+        token: localStorage.getItem("token")
+      };
+    case SIGNUP_FAILURE:
       return {
         ...state,
         logggingIn: false,
