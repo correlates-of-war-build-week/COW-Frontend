@@ -1,4 +1,6 @@
 import { axiosAuth } from "../Auth/axiosAuth";
+import { axiosNoAuth } from "../Auth/axiosNoAuth";
+import axios from "axios";
 
 export const LOGIN_START = "LOGIN_START";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
@@ -11,31 +13,41 @@ export const SIGNUP_FAILURE = "SIGNUP_FAILURE";
 export const login = creds => dispatch => {
   dispatch({ type: LOGIN_START });
   return (
-    axiosAuth()
-      .post("login", creds)
-      //   .post(
-      //     "https://correlates-of-war-backend.herokuapp.com/api/auth/login",
-      //     creds
-      //   )
+    axios
+      .post(
+        "https://correlates-of-war-backend.herokuapp.com/api/auth/login",
+        creds
+      )
+      //"https://correlates-of-war-backend.herokuapp.com/api/auth/login",
       .then(res => {
-        // localStorage.setItem("token", res.data.payload);
         localStorage.setItem("token", res.data.token);
-        // dispatch({ type: LOGIN_SUCCESS });
-        dispatch({ type: LOGIN_SUCCESS, payload: res.data.token });
-        return true;
+        // localStorage.setItem("token", res.data.token);
+        dispatch({ type: LOGIN_SUCCESS });
+        // dispatch({ type: LOGIN_SUCCESS, payload: res.data.token });
+
+        // return true;
       })
       .catch(err => console.log(err.response))
   );
 };
 
 export const signUp = creds => dispatch => {
-  dispatch({ type: LOGIN_START });
-  return axiosAuth()
-    .post("register", creds)
-    .then(res => {
-      localStorage.setItem("token", res.data.payload);
-      dispatch({ type: LOGIN_SUCCESS });
-      return true;
-    })
-    .catch(err => console.log(err.response));
+  dispatch({ type: SIGNUP_START });
+  return (
+    axios
+      // axiosNoAuth()
+
+      .post(
+        "https://correlates-of-war-backend.herokuapp.com/api/auth/register",
+        creds
+      )
+      //"https://correlates-of-war-backend.herokuapp.com/api/auth/register",
+      .then(res => {
+        console.log(res.data);
+        // localStorage.setItem("token", res.data.payload);
+        dispatch({ type: SIGNUP_SUCCESS });
+        // return true;
+      })
+      .catch(err => console.log(err.response))
+  );
 };
