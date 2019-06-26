@@ -11,8 +11,8 @@ import {
 } from "../actions";
 
 const initialState = {
-  warData: [],
-  logggingIn: false,
+  mapData: [],
+  loggingIn: false,
   error: null,
   loading: true,
   token: localStorage.getItem("token"),
@@ -26,20 +26,20 @@ export const reducer = (state = initialState, action) => {
       console.log("heres the action:", action);
       return {
         ...state,
-        logggingIn: true,
+        loggingIn: true,
         error: false
       };
     case LOGIN_SUCCESS:
       return {
         ...state,
-        logggingIn: false,
+        loggingIn: false,
         error: false,
         token: localStorage.getItem("token")
       };
     case LOGIN_FAILURE:
       return {
         ...state,
-        logggingIn: false,
+        loggingIn: false,
         error: action.payload
       };
     case SIGNUP_START:
@@ -47,20 +47,20 @@ export const reducer = (state = initialState, action) => {
       console.log("heres the action:", action);
       return {
         ...state,
-        logggingIn: true,
+        loggingIn: true,
         error: false
       };
     case SIGNUP_SUCCESS:
       return {
         ...state,
-        logggingIn: false,
+        loggingIn: false,
         error: false,
         token: localStorage.getItem("token")
       };
     case SIGNUP_FAILURE:
       return {
         ...state,
-        logggingIn: false,
+        loggingIn: false,
         error: action.payload
       };
     case FETCH_MAPDATA_START:

@@ -63,7 +63,7 @@ export const fetchWarData = () => dispatch => {
       headers: { Authorization: localStorage.getItem("token") }
     })
     .then(res => {
-      console.log(res);
+      console.log("get res", res.data);
       dispatch({ type: FETCH_MAPDATA_SUCCESS, payload: res.data });
     })
     .catch(err => {
