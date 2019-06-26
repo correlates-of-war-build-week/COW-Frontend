@@ -4,15 +4,19 @@ import {
   LOGIN_FAILURE,
   SIGNUP_START,
   SIGNUP_SUCCESS,
-  SIGNUP_FAILURE
+  SIGNUP_FAILURE,
+  FETCH_MAPDATA_START,
+  FETCH_MAPDATA_SUCCESS,
+  FETCH_MAPDATA_FAILURE
 } from "../actions";
 
 const initialState = {
-  wars: [],
+  warData: [],
   logggingIn: false,
   error: null,
   loading: true,
-  token: localStorage.getItem("token")
+  token: localStorage.getItem("token"),
+  fetchingData: false
 };
 
 export const reducer = (state = initialState, action) => {
@@ -57,6 +61,24 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         logggingIn: false,
+        error: action.payload
+      };
+    case FETCH_MAPDATA_START:
+      return {
+        ...state,
+        error: "",
+        fetchingData: true
+      };
+    case FETCH_MAPDATA_SUCCESS:
+      return {
+        ...state,
+        fetchingData: false,
+        mapData: action.payload
+      };
+    case FETCH_MAPDATA_FAILURE:
+      return {
+        ...state,
+        fetchingData: false,
         error: action.payload
       };
     default:

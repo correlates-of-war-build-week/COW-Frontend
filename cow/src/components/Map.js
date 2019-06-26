@@ -25,15 +25,15 @@ const Map = () => {
   const [selectedCountry, setSelectedCountry] = useState(null);
 
   useEffect(() => {
-    const warInfo = e => {
+    const listener = e => {
       if (e.key === "Escape") {
         setSelectedCountry(null);
       }
     };
-    window.addEventListener("click", warInfo);
+    window.addEventListener("click", listener);
 
     return () => {
-      window.removeEventListener("click", warInfo);
+      window.removeEventListener("click", listener);
     };
   }, []);
 
