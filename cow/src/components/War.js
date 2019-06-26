@@ -1,16 +1,18 @@
 import React from "react";
+import { Card, Row, Col } from "reactstrap";
 
 const War = props => {
   const {
     war: { StateName, stateabb, ccode, pred_proba }
   } = props;
   return (
-    <div>
-      <h1>inside War</h1>
-      <div>{StateName}</div>
-      <div>{stateabb}</div>
-      <div>{ccode}</div>
-      <div>{pred_proba}</div>
+    <div className="warCard">
+      <Card>
+        <div>{StateName}</div>
+        <div>{stateabb}</div>
+        <div>{ccode}</div>
+        <div>{pred_proba}</div>
+      </Card>
     </div>
   );
 };
