@@ -339,3 +339,16 @@ i {
   margin-top: 15%;
   margin-left: 43%;
 }
+
+.marker-btn {
+  border: none;
+}
+
+.img-btn {
+  width: 20px;
+  height: 20px;
+}
+
+.warCard {
+  background: #00bfff;
+}

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Loader from "react-loader-spinner";
 import { connect } from "react-redux";
-import { Form, Input } from "reactstrap";
+import { FormGroup, Input } from "reactstrap";
 
 import { signUp } from "../actions";
 
@@ -13,7 +13,7 @@ class SignUp extends Component {
   render() {
     return (
       <div>
-        <Form>
+        <FormGroup>
           <div>
             <Input
               placeholder="username"
@@ -38,14 +38,14 @@ class SignUp extends Component {
               required
             />
           </div>
-          <button onClick={this.login}>
+          <button onClick={this.signUp}>
             {this.props.loggingIn === true ? (
               <Loader type="ThreeDots" color="#CCCFBC" />
             ) : (
               "Sign Up"
             )}
           </button>
-        </Form>
+        </FormGroup>
       </div>
     );
   }
@@ -63,13 +63,14 @@ class SignUp extends Component {
   };
 
   signUp = () => {
+    // console.log("sign up works");
     this.props
       .signUp({
         username: this.state.username,
         password: this.state.password
       })
       .then(() => {
-        this.props.history.push("/");
+        this.props.history.push("/login");
       });
   };
 }
