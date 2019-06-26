@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ReactMapGL from "react-map-gl";
 import { Marker, Popup } from "react-map-gl";
 import * as countries from "../data/war.json";
+import tank from "../icon/tank.svg";
 
 // import 'font-awesome/css/font-awesome.min.css';
 // import tank from "../icon/tank.svg"
@@ -60,7 +61,8 @@ const Map = () => {
                 latitude={country.latitude}
               >
                 <button className="marker-btn">
-                  <img className="img-btn" src="../icon/tank.svg" alt="tank" />
+                  {/* <img className="img-btn" src="../icon/tank.svg" alt="tank" /> */}
+                  <img className="img-btn" src={tank} alt="tank" />
                 </button>
               </Marker>
             );
