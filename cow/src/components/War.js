@@ -3,12 +3,12 @@ import { Card, Row, Col } from "reactstrap";
 
 const War = props => {
   const {
-    war: { StateName, stateabb, ccode, pred_proba }
+    war: { stateabb, ccode, pred_proba }
   } = props;
   return (
     <div className="warCard">
       <Card>
-        <div>{StateName}</div>
+        {/* <div>{StateName}</div> */}
         <div>{stateabb}</div>
         <div>{ccode}</div>
         <div>{pred_proba}</div>

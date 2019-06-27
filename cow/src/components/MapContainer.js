@@ -5,7 +5,7 @@ import WarsList from "./WarsList";
 const MapContainer = () => {
   return (
     <div>
-      {/* <WarsList /> */}
+      <WarsList />
       <Map />
     </div>
   );

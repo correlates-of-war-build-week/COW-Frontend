@@ -18,7 +18,7 @@ const initialState = {
   token: localStorage.getItem("token"),
   fetchingData: false
 };
-
+// console.log("reducer mapData", mapData);
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN_START:
