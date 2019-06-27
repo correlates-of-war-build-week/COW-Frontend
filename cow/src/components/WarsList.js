@@ -10,11 +10,12 @@ class WarsList extends Component {
     return (
       //   console.log("Test", this.props.data),
       <div>
-        <h1>inside WarsList</h1>
+        {/* <h1>inside WarsList</h1>
         {this.props.data.map(war => {
           //   console.log("war .map", war);
           return <War war={war} key={war.id} />;
-        })}
+        })} */}
+        <h1>test</h1>
       </div>
     );
   }

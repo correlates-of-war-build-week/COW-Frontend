@@ -109,11 +109,11 @@ const Map = props => {
               <WarsList /> */}
               {/* <h1>{selectedCountry.props.data.stateabb}</h1> */}
               <h1>{selectedCountry.stateabb}</h1>
-              <h1>{selectedCountry.StateName}</h1>
+              <h1>{selectedCountry.stateName}</h1>
               <h1>{selectedCountry.ccode}</h1>
               <h1>{selectedCountry.pred_proba}</h1>
               {console.log(selectedCountry)}
-              <h1>hello</h1>
+              {/* <h1>hello</h1> */}
             </div>
           </Popup>
         ) : null}
