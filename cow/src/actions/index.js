@@ -1,5 +1,5 @@
-import { axiosAuth } from "../Auth/axiosAuth";
-import { axiosNoAuth } from "../Auth/axiosNoAuth";
+// import { axiosAuth } from "../Auth/axiosAuth";
+// import { axiosNoAuth } from "../Auth/axiosNoAuth";
 import axios from "axios";
 
 export const LOGIN_START = "LOGIN_START";
@@ -45,12 +45,11 @@ export const signUp = creds => dispatch => {
         "https://correlates-of-war-backend.herokuapp.com/api/auth/register",
         creds
       )
-      //"https://correlates-of-war-backend.herokuapp.com/api/auth/register",
+
       .then(res => {
         console.log(res.data);
-        // localStorage.setItem("token", res.data.payload);
+
         dispatch({ type: SIGNUP_SUCCESS });
-        // return true;
       })
       .catch(err => console.log(err.response))
   );
