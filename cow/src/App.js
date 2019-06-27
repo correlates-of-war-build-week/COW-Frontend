@@ -13,7 +13,7 @@ import SignUp from "./components/SignUp";
 function App() {
   return (
     <div className="App">
-      <h1>App</h1>
+      <h1 className="header">CORRELATES OF WAR</h1>
       <Route path="/login" component={Login} />
       <Route path="/register" component={SignUp} />
       {/* <Route path="/" component={SignUp} /> */}

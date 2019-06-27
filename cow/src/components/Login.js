@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Loader from "react-loader-spinner";
 import { connect } from "react-redux";
-import { Form, Input, FormGroup } from "reactstrap";
+import { Input, FormGroup } from "reactstrap";
 
 import { login } from "../actions";
 
@@ -15,8 +15,8 @@ class Login extends Component {
   render() {
     console.log(this.state);
     return (
-      <div>
-        <h1>inside the form</h1>
+      <div className="login">
+        <h1>Login</h1>
 
         <FormGroup>
           <Input
@@ -25,9 +25,7 @@ class Login extends Component {
             name="username"
             value={this.state.username}
             onChange={this.handleChanges}
-            className={
-              this.props.error === true ? "error login-input" : "login-input"
-            }
+            className={"login-input"}
             required
           />
 
@@ -37,15 +35,13 @@ class Login extends Component {
             name="password"
             value={this.state.password}
             onChange={this.handleChanges}
-            className={
-              this.props.error === true ? "error login-input" : "login-input"
-            }
+            className={" login-input"}
             required
           />
         </FormGroup>
         <button onClick={this.login}>
           {this.props.loggingIn === true ? (
-            <Loader type="ThreeDots" color="#CCCFBC" />
+            <Loader type="Circles" color="#87cefa" />
           ) : (
             "Log In"
           )}
@@ -57,7 +53,6 @@ class Login extends Component {
   componentDidMount() {
     if (this.props.token) {
       this.props.history.push("login");
-      //   this.props.history.push("correlates_of_war");
     }
   }
   handleChanges = e => {
@@ -74,7 +69,6 @@ class Login extends Component {
         password: this.state.password
       })
       .then(() => {
-        // this.props.history.push("login");
         this.props.history.push("correlates_of_war");
       });
   };

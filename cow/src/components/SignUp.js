@@ -12,35 +12,34 @@ class SignUp extends Component {
   };
   render() {
     return (
-      <div>
+      <div className="login">
+        <h1>Sign Up</h1>
         <FormGroup>
           <div>
             <Input
+              type="text"
               placeholder="username"
               name="username"
               value={this.state.username}
               onChange={this.handleChanges}
-              className={
-                this.props.error === true ? "error login-input" : "login-input"
-              }
+              className={" login-input"}
               required
             />
           </div>
           <div>
             <Input
+              type="password"
               placeholder="password"
               name="password"
               value={this.state.password}
               onChange={this.handleChanges}
-              className={
-                this.props.error === true ? "error login-input" : "login-input"
-              }
+              className={" login-input"}
               required
             />
           </div>
           <button onClick={this.signUp}>
             {this.props.loggingIn === true ? (
-              <Loader type="ThreeDots" color="#CCCFBC" />
+              <Loader type="Circles" color="#87cefa" />
             ) : (
               "Sign Up"
             )}
