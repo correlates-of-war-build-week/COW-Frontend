@@ -53,7 +53,7 @@ const Map = () => {
         }}
       >
         {countries.default.map((country, i) => {
-          console.log("heres the lat!", country.latitude);
+          //   console.log("heres the lat!", country.latitude);
           if (country.latitude || country.longitude) {
             return (
               <Marker
@@ -87,8 +87,8 @@ const Map = () => {
             }}
           >
             <div>
-              {/* <h1>hello</h1> */}
-              if(countries)
+              <h1>hello</h1>
+              {/* if(countries.default.ccode) */}
               <WarsList />
             </div>
           </Popup>
