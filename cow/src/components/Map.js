@@ -3,6 +3,7 @@ import ReactMapGL from "react-map-gl";
 import { Marker, Popup } from "react-map-gl";
 import * as countries from "../data/war.json";
 import tank from "../icon/tank.svg";
+import WarsList from "./WarsList";
 
 // import 'font-awesome/css/font-awesome.min.css';
 // import tank from "../icon/tank.svg"
@@ -52,15 +53,20 @@ const Map = () => {
         }}
       >
         {countries.default.map((country, i) => {
-          //   console.log("heres the lat!", country.latitude);
+          console.log("heres the lat!", country.latitude);
           if (country.latitude || country.longitude) {
             return (
               <Marker
-                key={country.name}
+                key={country.ccode}
                 longitude={country.longitude}
                 latitude={country.latitude}
               >
-                <button className="marker-btn">
+                <button
+                  className="marker-btn"
+                  onClick={e => {
+                    setSelectedCountry(country);
+                  }}
+                >
                   {/* <img className="img-btn" src="../icon/tank.svg" alt="tank" /> */}
                   <img className="img-btn" src={tank} alt="tank" />
                 </button>
@@ -77,11 +83,13 @@ const Map = () => {
             latitude={selectedCountry.latitude}
             longitude={selectedCountry.longitude}
             onClose={() => {
-              selectedCountry(null);
+              setSelectedCountry(null);
             }}
           >
             <div>
-              <h1>hello</h1>
+              {/* <h1>hello</h1> */}
+              if(countries)
+              <WarsList />
             </div>
           </Popup>
         ) : null}
