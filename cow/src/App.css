@@ -249,9 +249,10 @@ h3 {
 }
 
 .card {
-  /* height: 350px; */
-  /* width: 280px; */
-  /* margin: 20px; */
-  /* background: #87cefa; */
+  /* height: 5px; */
+  margin-bottom: -30px;
+
+  background: none;
+  border: none;
   box-shadow: 10px 10px 29px 0px rgba(0, 0, 0, 0.75);
 }

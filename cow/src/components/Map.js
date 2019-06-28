@@ -34,7 +34,7 @@ const Map = props => {
   }, []);
 
   return (
-    <div>
+    <div className="card">
       <ReactMapGL
         {...viewport}
         // mapboxApiAccessToken={process.env.REACT_APP_MAP_TOKEN}
