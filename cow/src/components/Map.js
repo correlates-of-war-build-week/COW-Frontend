@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ReactMapGL from "react-map-gl";
 import { Marker, Popup } from "react-map-gl";
-import * as countries from "../data/war.json";
+// import * as countries from "../data/war.json";
 import tank from "../icon/tank.svg";
 
 import { connect } from "react-redux";
@@ -19,11 +19,13 @@ const Map = props => {
 
   const [selectedCountry, setSelectedCountry] = useState(null);
 
-  const popupCountry = ccode => {
-    countries.default.filter(country => {
-      return ccode === country.ccode;
-    });
-  };
+  const [newPercent, setPercent] = useState({ percent: props.data.pred_proba });
+
+  //   const popupCountry = ccode => {
+  //     countries.default.filter(country => {
+  //       return ccode === country.ccode;
+  //     });
+  //   };
 
   useEffect(() => {
     const listener = e => {
@@ -64,7 +66,7 @@ const Map = props => {
                   className="marker-btn"
                   onClick={e => {
                     setSelectedCountry(country);
-                    popupCountry(country.ccode);
+                    // popupCountry(country.ccode);
                   }}
                 >
                   <img className="img-btn" src={tank} alt="tank" />
@@ -74,9 +76,10 @@ const Map = props => {
           }
           return;
         })}
+
         {selectedCountry ? (
           <Popup
-            // className="card"
+            className="card"
             latitude={selectedCountry.latitude}
             longitude={selectedCountry.longitude}
             onClose={() => {
@@ -84,10 +87,9 @@ const Map = props => {
             }}
           >
             <div>
-              <h1>{selectedCountry.stateabb}</h1>
-              <h1>{selectedCountry.stateName}</h1>
-              <h1>{selectedCountry.ccode}</h1>
-              <h1>{selectedCountry.pred_proba}</h1>
+              <h1>Country: {selectedCountry.StateNme}</h1>
+              <h1>Population: {selectedCountry.tpop}</h1>
+              <h1>Probablity of War: {({selectedCountry.pred_proba} *100 )}</h1>
             </div>
           </Popup>
         ) : null}
