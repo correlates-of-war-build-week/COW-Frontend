@@ -44,6 +44,7 @@ const Map = props => {
         {...viewport}
         // mapboxApiAccessToken={process.env.REACT_APP_MAP_TOKEN}
         mapboxApiAccessToken={
+          //   process.env.REACT_APP_MAPTOKEN
           "pk.eyJ1IjoicmVlZHRqIiwiYSI6ImNqeGM3aHR6NzAwaHUzeW52MnhlNzhhNmcifQ.Wd9r5mNmWaQAuG5vZsUIyg"
         }
         mapStyle="mapbox://styles/reedtj/cjxca3nb401eh1clrr1hry2r7"
