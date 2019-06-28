@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Loader from "react-loader-spinner";
 import { connect } from "react-redux";
-import { FormGroup, Input } from "reactstrap";
+import { FormGroup, Input, Button } from "reactstrap";
 
 import { signUp } from "../actions";
 
@@ -12,39 +12,36 @@ class SignUp extends Component {
   };
   render() {
     return (
-      <div className="login">
-        <h1>Sign Up</h1>
+      <div className="login login-img">
+        <h1 className="login-text">Sign Up</h1>
         <FormGroup>
-          <div>
-            <Input
-              type="text"
-              placeholder="username"
-              name="username"
-              value={this.state.username}
-              onChange={this.handleChanges}
-              className={" login-input"}
-              required
-            />
-          </div>
-          <div>
-            <Input
-              type="password"
-              placeholder="password"
-              name="password"
-              value={this.state.password}
-              onChange={this.handleChanges}
-              className={" login-input"}
-              required
-            />
-          </div>
-          <button onClick={this.signUp}>
-            {this.props.loggingIn === true ? (
-              <Loader type="Circles" color="#87cefa" />
-            ) : (
-              "Sign Up"
-            )}
-          </button>
+          <Input
+            type="text"
+            placeholder="username"
+            name="username"
+            value={this.state.username}
+            onChange={this.handleChanges}
+            className={" login-input"}
+            required
+          />
+
+          <Input
+            type="password"
+            placeholder="password"
+            name="password"
+            value={this.state.password}
+            onChange={this.handleChanges}
+            className={" login-input"}
+            required
+          />
         </FormGroup>
+        <Button className="login-btn" onClick={this.signUp}>
+          {this.props.loggingIn === true ? (
+            <Loader type="Circles" color="#87cefa" />
+          ) : (
+            "Sign Up"
+          )}
+        </Button>
       </div>
     );
   }

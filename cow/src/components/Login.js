@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Loader from "react-loader-spinner";
 import { connect } from "react-redux";
-import { Input, FormGroup } from "reactstrap";
+import { Input, FormGroup, Button } from "reactstrap";
 
 import { login } from "../actions";
 
@@ -15,8 +15,8 @@ class Login extends Component {
   render() {
     console.log(this.state);
     return (
-      <div className="login">
-        <h1>Login</h1>
+      <div className="login login-img">
+        <h1 className="login-text">Please Login</h1>
 
         <FormGroup>
           <Input
@@ -39,13 +39,13 @@ class Login extends Component {
             required
           />
         </FormGroup>
-        <button onClick={this.login}>
+        <Button className="login-btn" size="lg" onClick={this.login}>
           {this.props.loggingIn === true ? (
             <Loader type="Circles" color="#87cefa" />
           ) : (
             "Log In"
           )}
-        </button>
+        </Button>
       </div>
     );
   }

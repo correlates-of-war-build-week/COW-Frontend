@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ReactMapGL from "react-map-gl";
 import { Marker, Popup } from "react-map-gl";
-import * as countries from "../data/war.json";
 import tank from "../icon/tank.svg";
 
 import { connect } from "react-redux";
@@ -19,11 +18,7 @@ const Map = props => {
 
   const [selectedCountry, setSelectedCountry] = useState(null);
 
-  const popupCountry = ccode => {
-    countries.default.filter(country => {
-      return ccode === country.ccode;
-    });
-  };
+  const [newPercent, setPercent] = useState({ percent: props.data.pred_proba });
 
   useEffect(() => {
     const listener = e => {
@@ -39,11 +34,12 @@ const Map = props => {
   }, []);
 
   return (
-    <div>
+    <div className="card">
       <ReactMapGL
         {...viewport}
         // mapboxApiAccessToken={process.env.REACT_APP_MAP_TOKEN}
         mapboxApiAccessToken={
+          //   process.env.REACT_APP_MAPTOKEN
           "pk.eyJ1IjoicmVlZHRqIiwiYSI6ImNqeGM3aHR6NzAwaHUzeW52MnhlNzhhNmcifQ.Wd9r5mNmWaQAuG5vZsUIyg"
         }
         mapStyle="mapbox://styles/reedtj/cjxca3nb401eh1clrr1hry2r7"
@@ -63,7 +59,7 @@ const Map = props => {
                   className="marker-btn"
                   onClick={e => {
                     setSelectedCountry(country);
-                    popupCountry(country.ccode);
+                    // popupCountry(country.ccode);
                   }}
                 >
                   <img className="img-btn" src={tank} alt="tank" />
@@ -73,9 +69,10 @@ const Map = props => {
           }
           return;
         })}
+
         {selectedCountry ? (
           <Popup
-            // className="card"
+            className="card"
             latitude={selectedCountry.latitude}
             longitude={selectedCountry.longitude}
             onClose={() => {
@@ -83,10 +80,10 @@ const Map = props => {
             }}
           >
             <div>
-              <h1>{selectedCountry.stateabb}</h1>
-              <h1>{selectedCountry.stateName}</h1>
-              <h1>{selectedCountry.ccode}</h1>
-              <h1>{selectedCountry.pred_proba}</h1>
+              <h1>Country: {selectedCountry.StateNme}</h1>
+              <h1>{`Population (x1000): ${selectedCountry.tpop}`}</h1>
+              <h1>{`Military Personnel (x1000): ${selectedCountry.milper}`}</h1>
+              <h1>Probability of War: {selectedCountry.pred_proba}</h1>
             </div>
           </Popup>
         ) : null}
