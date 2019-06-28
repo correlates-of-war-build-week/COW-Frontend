@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ReactMapGL from "react-map-gl";
 import { Marker, Popup } from "react-map-gl";
-// import * as countries from "../data/war.json";
 import tank from "../icon/tank.svg";
 
 import { connect } from "react-redux";
@@ -20,12 +19,6 @@ const Map = props => {
   const [selectedCountry, setSelectedCountry] = useState(null);
 
   const [newPercent, setPercent] = useState({ percent: props.data.pred_proba });
-
-  //   const popupCountry = ccode => {
-  //     countries.default.filter(country => {
-  //       return ccode === country.ccode;
-  //     });
-  //   };
 
   useEffect(() => {
     const listener = e => {
@@ -88,8 +81,9 @@ const Map = props => {
           >
             <div>
               <h1>Country: {selectedCountry.StateNme}</h1>
-              <h1>Population: {selectedCountry.tpop}</h1>
-              <h1>Probablity of War: {({selectedCountry.pred_proba} *100 )}</h1>
+              <h1>{`Population (x1000): ${selectedCountry.tpop}`}</h1>
+              <h1>{`Military Personnel (x1000): ${selectedCountry.milper}`}</h1>
+              <h1>Probability of War: {selectedCountry.pred_proba}</h1>
             </div>
           </Popup>
         ) : null}
